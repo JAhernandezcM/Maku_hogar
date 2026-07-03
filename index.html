@@ -464,6 +464,15 @@
             localStorage.setItem('makuHogarCart', JSON.stringify(product));
             localStorage.setItem('makuHogarOrder', JSON.stringify(order));
 
+            const whatsappMessage =
+                '🛒 *Nuevo pedido - Maku-hogar*\n\n' +
+                '👤 Cliente: ' + customer.fullName + '\n' +
+                '📞 Celular: ' + customer.phone + '\n' +
+                '📍 Dirección: ' + customer.address + ', ' + customer.city + '\n\n' +
+                '📦 Producto: ' + product.name + ' (' + product.variant + ')\n' +
+                '💰 Total a pagar (contra entrega): $' + product.total.toLocaleString('es-CO') + ' COP';
+
+            window.open('https://wa.me/573164663914?text=' + encodeURIComponent(whatsappMessage), '_blank');
             window.location.href = '/gracias';
         });
     </script>
