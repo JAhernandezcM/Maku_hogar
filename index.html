@@ -320,7 +320,7 @@
 <!-- Form -->
 <div class="flex-1 p-8 md:p-10">
 <h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Completa tus Datos</h3>
-<form action="#" class="space-y-4" method="POST">
+<form action="#" class="space-y-4" id="orderForm" method="POST">
 <div>
 <label class="block text-sm font-medium text-on-surface mb-1" for="fullName">Nombre Completo</label>
 <input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="fullName" name="fullName" required="" type="text">
@@ -348,7 +348,7 @@
 </div>
 </div>
 <button class="w-full mt-6 bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" type="submit">
-                        ¡PEDIR AHORA!
+                        CONFIRMAR PEDIDO (PAGAS EN CASA)
                     </button>
 <p class="text-center text-xs text-on-surface-variant mt-4 flex items-center justify-center gap-1">
 <span class="material-symbols-outlined text-[14px]">lock</span> Compra 100% Segura
@@ -400,10 +400,10 @@
 <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto gap-6">
 <div class="font-display-lg-mobile text-display-lg-mobile font-black text-primary">Maku-hogar</div>
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Términos</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contacto</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Soporte</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/privacidad">Privacidad</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/terminos">Términos</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/contacto">Contacto</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="/soporte">Soporte</a>
 </div>
 <div class="font-body-md text-body-md text-on-surface-variant text-sm text-center md:text-right">
                 © 2026 Maku-hogar Colombia. Todos los derechos reservados.
@@ -436,6 +436,35 @@
                 content.classList.toggle('hidden');
                 icon.classList.toggle('rotate-180');
             });
+        });
+
+        // Checkout: contra entrega (pago en casa)
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const customer = {
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value
+            };
+
+            const product = {
+                name: 'VITA-BLENDER Inteligente',
+                variant: 'Verde Esmeralda + Cable USB',
+                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAy4FtFu3ecsYy7AF-Ek7F7zWvejUWMc2sK51gQA_-uv65qLZFJgGL0PmQ-x0mCIeOjmmg8iZehDVYoey_380bNBRJRYhkfsHnPjeTfbglhZXTTtt4_iCeV_t2JJmoNQwkVr1ckSiZF3Hvjo_BRUG-ZvsW01zYEGkBzYs0mIGz5TfGZADS9zv0L96xLf4_IB0u7etNxflF1D_ytA4swerkIkM2hMD71uOu_u4OUBTMtIsDNzP2Er3wXHH7ePWkmMux-ryWeSRpNyEc',
+                regularPrice: 150000,
+                discount: 60100,
+                shipping: 0,
+                total: 89900
+            };
+
+            const order = { customer: customer, product: product, createdAt: new Date().toISOString() };
+
+            localStorage.setItem('makuHogarCart', JSON.stringify(product));
+            localStorage.setItem('makuHogarOrder', JSON.stringify(order));
+
+            window.location.href = '/gracias';
         });
     </script>
 

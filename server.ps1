@@ -30,6 +30,11 @@ try {
         $cleanPath = $decodedUrl.Replace('/', [System.IO.Path]::DirectorySeparatorChar).TrimStart([System.IO.Path]::DirectorySeparatorChar)
         $filePath = [System.IO.Path]::GetFullPath([System.IO.Path]::Combine((Get-Location).Path, $cleanPath))
 
+        # Support clean URLs (e.g. /gracias -> gracias.html), mirroring Vercel's cleanUrls setting
+        if (-not (Test-Path $filePath -PathType Leaf) -and [System.IO.Path]::GetExtension($filePath) -eq "") {
+            $filePath = "$filePath.html"
+        }
+
         # Check if the requested file is within the current workspace directory to prevent path traversal
         $currentDir = [System.IO.Path]::GetFullPath((Get-Location).Path)
         if (-not $filePath.StartsWith($currentDir)) {
