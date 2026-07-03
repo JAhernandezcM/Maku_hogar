@@ -439,6 +439,32 @@
         });
 
         // Checkout: contra entrega (pago en casa)
+        var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx3RuuV30JNe024aJrpmcr_5BOz4RFpY5vypCEx7vmBff61QcBbXtgicTZlMqWTdQnFgw/exec';
+
+        function saveOrderToSheet(customer, product) {
+            return fetch(GOOGLE_SHEETS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({
+                    fullName: customer.fullName,
+                    phone: customer.phone,
+                    address: customer.address,
+                    city: customer.city,
+                    productName: product.name,
+                    productVariant: product.variant,
+                    total: product.total
+                })
+            });
+        }
+
+        function withTimeout(promise, ms) {
+            return Promise.race([
+                promise,
+                new Promise(function (resolve) { setTimeout(resolve, ms); })
+            ]);
+        }
+
         document.getElementById('orderForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -472,8 +498,10 @@
                 '📦 Producto: ' + product.name + ' (' + product.variant + ')\n' +
                 '💰 Total a pagar (contra entrega): $' + product.total.toLocaleString('es-CO') + ' COP';
 
-            window.open('https://wa.me/573164663914?text=' + encodeURIComponent(whatsappMessage), '_blank');
-            window.location.href = '/gracias';
+            withTimeout(saveOrderToSheet(customer, product).catch(function () {}), 4000).finally(function () {
+                window.open('https://wa.me/573164663914?text=' + encodeURIComponent(whatsappMessage), '_blank');
+                window.location.href = '/gracias';
+            });
         });
     </script>
 
