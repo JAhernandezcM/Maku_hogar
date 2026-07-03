@@ -1,0 +1,443 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>VITA-BLENDER - Licuadora Portátil Inteligente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#101e1a",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf3eb",
+                        "primary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#bacac3",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#4edea3",
+                        "secondary-container": "#d3e3dc",
+                        "surface-variant": "#dde4dd",
+                        "outline-variant": "#bbcabf",
+                        "on-tertiary-fixed-variant": "#294e3f",
+                        "tertiary": "#416656",
+                        "on-surface": "#161d19",
+                        "background": "#f4fbf4",
+                        "secondary-fixed": "#d5e6df",
+                        "outline": "#6c7a71",
+                        "inverse-surface": "#2b322d",
+                        "surface-container-high": "#e3eae3",
+                        "on-background": "#161d19",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#d4dcd5",
+                        "surface-container-low": "#eef6ee",
+                        "on-secondary-fixed-variant": "#3b4a44",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#566660",
+                        "surface-tint": "#006c49",
+                        "on-primary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#1b3f31",
+                        "tertiary-fixed": "#c3ecd7",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#10b981",
+                        "on-secondary": "#ffffff",
+                        "primary": "#006c49",
+                        "surface-container-highest": "#dde4dd",
+                        "tertiary-fixed-dim": "#a8cfbc",
+                        "surface-bright": "#f4fbf4",
+                        "surface-container": "#e8f0e9",
+                        "tertiary-container": "#84ab98",
+                        "surface": "#f4fbf4",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#4edea3",
+                        "on-surface-variant": "#3c4a42",
+                        "on-tertiary-fixed": "#002115",
+                        "on-primary-fixed": "#002113",
+                        "secondary": "#52625c",
+                        "on-primary-container": "#00422b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-sm": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .shadow-ambient-md { box-shadow: 0px 10px 15px -3px rgba(31, 41, 55, 0.08); }
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.5); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary font-sans antialiased">
+<!-- Announcement Bar -->
+<div class="bg-primary-container text-on-primary text-center py-2 px-4 font-label-md sticky top-0 z-50 shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+        ¡ENVÍO GRATIS Y PAGO CONTRA ENTREGA EN TODO COLOMBIA!
+    </div>
+<!-- Top Navigation (Shell) -->
+<nav class="bg-background/80 dark:bg-background/80 backdrop-blur-md fixed top-10 w-full z-40 border-b border-outline-variant/30 shadow-sm hidden md:block">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-base max-w-container-max mx-auto">
+<div class="font-display-lg-mobile text-display-lg-mobile font-bold text-primary">Maku-hogar&nbsp;</div>
+<div class="flex gap-gutter items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#beneficios">Beneficios</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#funcionamiento">Funcionamiento</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#faqs">FAQs</a>
+<a class="bg-primary text-on-primary px-6 py-2 rounded-md font-label-md hover:opacity-90 transition-opacity active:scale-95 shadow-ambient-md" href="#order-form">Comprar Ahora</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="pt-32 pb-16 md:pt-48 md:pb-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-stack-lg items-center">
+<div class="flex flex-col gap-stack-md z-10">
+<div class="inline-flex items-center gap-2 bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full font-label-sm w-fit border border-secondary-fixed">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                    3 personas viendo este producto ahora
+                </div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-primary-container text-display-lg-mobile md:text-display-lg">
+                    TU LICUADORA PORTÁTIL:<br> <span class="text-on-background">SALUD Y ENERGÍA EN CUALQUIER LUGAR, EN SEGUNDOS.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    El secreto para batidos frescos en el gimnasio, la oficina o de viaje. Sin cables y con pantalla digital inteligente.
+                </p>
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-ambient-md mt-4 max-w-md">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-on-surface-variant line-through text-sm">Precio Regular: $150,000 COP</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">Oferta: $89.900 COP</p>
+</div>
+<div class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-bold animate-pulse">
+                            -40% HOY
+                        </div>
+</div>
+<a class="block w-full bg-primary-container text-on-primary text-center py-4 rounded-md font-label-md text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" href="#order-form">
+                        SÍ, QUIERO MI LICUADORA AHORA<br>
+<span class="text-sm font-normal opacity-90">(PAGO CONTRA ENTREGA)</span>
+</a>
+<div class="flex justify-center gap-4 mt-4 text-sm text-on-surface-variant">
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary-container">payments</span> Paga al recibir</div>
+<div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-primary-container">verified</span> Garantía 10 días</div>
+</div>
+</div>
+</div>
+<div class="relative w-full h-[400px] md:h-[600px] rounded-2xl overflow-hidden shadow-ambient-md bg-surface-container">
+<!-- Abstract background pattern placeholder -->
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-low to-secondary-container opacity-50"></div>
+<img alt="Licuadora Portátil Vita-Blender" class="absolute inset-0 w-full h-full object-cover z-10" data-alt="A sleek, modern portable blender in matte gray, featuring a digital display, surrounded by fresh strawberries, kiwis, and blueberries on a clean white marble kitchen countertop. Bright, natural, high-key lighting, lifestyle wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAomnrKdRbTP0AY92heZcn7JTPEwmtXr39zHc34c3waDdDx-OPwasKRaAZ37pY3Omhfm92YfJ_aOm_3-7bzP3koOt1gq8tpMAMx8ukiTbL4fQ-eXQo5sZlJncrT-M08TyaUmlqDrBTUGBaQzXC1IRgxKB_wNuEsTs8sT1f3-XlLyJWDIgVYVVWFJWcg9hQ0RI3OJ2S6gvWDdxRFA4X32JrX3kZatAvD5km0Id6Tp8m61Lpk5QdKi3fUFGxt2sZfcHBAtWs-VK14M9JWKA">
+</div>
+</div>
+</section>
+<!-- Key Benefits (Bento Grid Style) -->
+<section class="bg-surface py-16 md:py-24 px-margin-mobile md:px-margin-desktop" id="beneficios">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-12">
+<h2 class="font-headline-md text-headline-md text-primary">Diseñada para tu Ritmo de Vida</h2>
+<p class="text-on-surface-variant mt-2 font-body-md">Alta tecnología en un formato compacto</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm hover:shadow-ambient-md transition-shadow group">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">luggage</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Portátil y Compacta</h3>
+<p class="text-on-surface-variant text-sm">Cabe perfectamente en cualquier bolso, mochila o portavasos del auto.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm hover:shadow-ambient-md transition-shadow group">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Potente Motor</h3>
+<p class="text-on-surface-variant text-sm">Cuchillas de acero inoxidable capaces de triturar hielo y frutas congeladas sin esfuerzo.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm hover:shadow-ambient-md transition-shadow group">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">battery_charging_full</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Carga USB &amp; Pantalla</h3>
+<p class="text-on-surface-variant text-sm">Pantalla digital inteligente que muestra el nivel exacto de batería en tiempo real.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-sm hover:shadow-ambient-md transition-shadow group">
+<div class="w-12 h-12 bg-secondary-container rounded-lg flex items-center justify-center mb-4 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2">Limpieza Fácil</h3>
+<p class="text-on-surface-variant text-sm">Agrega agua, jabón y presiona el botón. Sistema de autolimpieza en solo 10 segundos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-low relative overflow-hidden" id="funcionamiento">
+<!-- Decorative subtle background -->
+<div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-fixed-dim/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-container-max mx-auto relative z-10">
+<h2 class="font-headline-md text-headline-md text-center text-primary mb-16">Batidos Perfectos en 3 Pasos</h2>
+<div class="flex flex-col md:flex-row justify-center items-start gap-12 relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden md:block absolute top-10 left-[15%] right-[15%] h-0.5 bg-outline-variant/30 -z-10"></div>
+<!-- Step 1 -->
+<div class="flex-1 text-center group">
+<div class="w-20 h-20 mx-auto bg-surface-container-lowest rounded-full border-4 border-surface shadow-ambient-md flex items-center justify-center mb-6 relative group-hover:-translate-y-2 transition-transform duration-300">
+<span class="text-2xl font-bold text-primary-container">1</span>
+<div class="absolute -right-2 -top-2 w-8 h-8 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">nutrition</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Llena</h4>
+<p class="text-on-surface-variant text-sm">Agrega tus frutas favoritas, proteínas y el líquido de tu preferencia.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex-1 text-center group">
+<div class="w-20 h-20 mx-auto bg-surface-container-lowest rounded-full border-4 border-surface shadow-ambient-md flex items-center justify-center mb-6 relative group-hover:-translate-y-2 transition-transform duration-300">
+<span class="text-2xl font-bold text-primary-container">2</span>
+<div class="absolute -right-2 -top-2 w-8 h-8 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">touch_app</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Presiona</h4>
+<p class="text-on-surface-variant text-sm">Presiona el botón dos veces para iniciar y verifica el estado en la pantalla.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex-1 text-center group">
+<div class="w-20 h-20 mx-auto bg-surface-container-lowest rounded-full border-4 border-surface shadow-ambient-md flex items-center justify-center mb-6 relative group-hover:-translate-y-2 transition-transform duration-300">
+<span class="text-2xl font-bold text-primary-container">3</span>
+<div class="absolute -right-2 -top-2 w-8 h-8 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-primary">local_drink</span>
+</div>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Disfruta</h4>
+<p class="text-on-surface-variant text-sm">Tu batido fresco, suave y sin grumos, listo para tomar al instante.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-container-max mx-auto text-center">
+<h2 class="font-headline-md text-headline-md text-primary mb-12">¡Lo que dicen nuestros clientes!</h2>
+<div class="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden aspect-[16/9] md:aspect-[21/9] shadow-ambient-md">
+<img alt="Testimonios de Clientes" class="w-full h-full object-cover" data-alt="Three circular profile photos of diverse, happy people (a fitness coach, a marketing manager, and a travel blogger) holding portable blenders in different settings (gym, office, beach). Bright, authentic lifestyle photography with a soft glowing background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy4FtFu3ecsYy7AF-Ek7F7zWvejUWMc2sK51gQA_-uv65qLZFJgGL0PmQ-x0mCIeOjmmg8iZehDVYoey_380bNBRJRYhkfsHnPjeTfbglhZXTTtt4_iCeV_t2JJmoNQwkVr1ckSiZF3Hvjo_BRUG-ZvsW01zYEGkBzYs0mIGz5TfGZADS9zv0L96xLf4_IB0u7etNxflF1D_ytA4swerkIkM2hMD71uOu_u4OUBTMtIsDNzP2Er3wXHH7ePWkmMux-ryWeSRpNyEc">
+<!-- Overlay text to reinforce image content if needed visually, though image contains text -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-6 md:p-8 text-left opacity-0 md:opacity-100 transition-opacity">
+<div class="flex gap-1 text-yellow-400 mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-white font-body-lg italic">"Increíble potencia y el envío fue rapidísimo. Pagué al recibir sin problema."</p>
+</div>
+</div>
+<div class="mt-8 flex justify-center gap-2">
+<div class="flex gap-1 text-yellow-400">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="text-on-surface-variant text-sm font-medium">Más de 1.000 clientes satisfechos</span>
+</div>
+</div>
+</section>
+<!-- Order Form Section -->
+<section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest" id="order-form">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 bg-white rounded-2xl shadow-ambient-md border border-surface-variant overflow-hidden">
+<!-- Product Recap -->
+<div class="flex-1 bg-surface-container p-8 md:p-10 flex flex-col justify-center">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Resumen de tu Orden</h3>
+<div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant/30">
+<div class="w-20 h-20 rounded bg-white shadow-sm overflow-hidden flex-shrink-0">
+<img alt="VITA-BLENDER Miniatura" class="w-full h-full object-cover" data-alt="Close up of the sleek portable blender showing the digital display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy4FtFu3ecsYy7AF-Ek7F7zWvejUWMc2sK51gQA_-uv65qLZFJgGL0PmQ-x0mCIeOjmmg8iZehDVYoey_380bNBRJRYhkfsHnPjeTfbglhZXTTtt4_iCeV_t2JJmoNQwkVr1ckSiZF3Hvjo_BRUG-ZvsW01zYEGkBzYs0mIGz5TfGZADS9zv0L96xLf4_IB0u7etNxflF1D_ytA4swerkIkM2hMD71uOu_u4OUBTMtIsDNzP2Er3wXHH7ePWkmMux-ryWeSRpNyEc">
+</div>
+<div>
+<h4 class="font-label-md text-on-surface font-bold">VITA-BLENDER Inteligente</h4>
+<p class="text-on-surface-variant text-sm">Verde Esmeralda + Cable USB</p>
+</div>
+</div>
+<div class="flex justify-between mb-2 text-on-surface-variant">
+<span class="">Precio Regular</span>
+<span class="line-through">$150,000</span>
+</div>
+<div class="flex justify-between mb-2 text-primary-container font-medium">
+<span class="">Descuento</span>
+<span class="">-$60.100</span>
+</div>
+<div class="flex justify-between mb-4 text-on-surface-variant">
+<span class="">Envío</span>
+<span class="text-primary-container font-bold">GRATIS</span>
+</div>
+<div class="flex justify-between items-end pt-4 border-t border-outline-variant/30">
+<span class="font-bold text-on-surface">Total a Pagar (Al recibir)</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">$89.900 COP</span>
+</div>
+</div>
+<!-- Form -->
+<div class="flex-1 p-8 md:p-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-6">Completa tus Datos</h3>
+<form action="#" class="space-y-4" method="POST">
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1" for="fullName">Nombre Completo</label>
+<input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="fullName" name="fullName" required="" type="text">
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1" for="phone">Celular</label>
+<input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="phone" name="phone" required="" type="tel">
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1" for="address">Dirección de Envío Completa</label>
+<input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="address" name="address" required="" type="text">
+</div>
+<div>
+<label class="block text-sm font-medium text-on-surface mb-1" for="city">Ciudad / Departamento</label>
+<input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="city" name="city" required="" type="text">
+</div>
+<div class="bg-secondary-container/30 p-4 rounded-md border border-secondary-fixed mt-6 flex items-start gap-3">
+<div class="mt-0.5">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-medium text-on-surface text-sm">Método de pago seleccionado:</p>
+<p class="text-primary font-bold">PAGO CONTRA ENTREGA</p>
+<p class="text-xs text-on-surface-variant mt-1">Pagas en efectivo cuando recibas el producto en la puerta de tu casa.</p>
+</div>
+</div>
+<button class="w-full mt-6 bg-primary-container text-on-primary py-4 rounded-md font-bold text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" type="submit">
+                        ¡PEDIR AHORA!
+                    </button>
+<p class="text-center text-xs text-on-surface-variant mt-4 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> Compra 100% Segura
+                    </p>
+</form>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface" id="faqs">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-md text-headline-md text-primary text-center mb-10">Preguntas Frecuentes</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="border border-outline-variant/50 rounded-lg bg-surface-container-lowest overflow-hidden">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none group faq-btn">
+<span class="font-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">¿Cuánto dura la batería?</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors transform duration-300 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-4 faq-content text-on-surface-variant text-sm hidden">
+                        Con una carga completa (que toma aprox. 2-3 horas por USB), puedes preparar hasta 15 batidos. La pantalla digital te avisará exactamente cuándo necesitas recargarla.
+                    </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="border border-outline-variant/50 rounded-lg bg-surface-container-lowest overflow-hidden">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none group faq-btn">
+<span class="font-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">¿Realmente tritura hielo?</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors transform duration-300 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-4 faq-content text-on-surface-variant text-sm hidden">
+                        Sí. Gracias a sus 6 cuchillas de acero inoxidable 304 y su potente motor, está diseñada para triturar hielo y frutas congeladas. Recomendamos usar cubos de hielo pequeños y siempre agregar líquido.
+                    </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="border border-outline-variant/50 rounded-lg bg-surface-container-lowest overflow-hidden">
+<button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none group faq-btn">
+<span class="font-label-md text-on-surface font-semibold group-hover:text-primary transition-colors">¿Cómo funciona el Pago Contra Entrega?</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors transform duration-300 faq-icon">expand_more</span>
+</button>
+<div class="px-6 pb-4 faq-content text-on-surface-variant text-sm hidden">
+                        Es muy sencillo. Llenas el formulario con tus datos y enviamos la licuadora a tu dirección. Solo le pagas en efectivo al mensajero de la transportadora en el momento en que te entregue el paquete en tus manos. 100% seguro.
+                    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full bg-surface-container-low flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto gap-6">
+<div class="font-display-lg-mobile text-display-lg-mobile font-black text-primary">Maku-hogar</div>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacidad</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Términos</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contacto</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Soporte</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-sm text-center md:text-right">
+                © 2026 Maku-hogar Colombia. Todos los derechos reservados.
+            </div>
+</div>
+</footer>
+<!-- Bottom Mobile Nav (Only visible on small screens, structural logic placeholder if needed, omitted per prompt focusing on LP flow, but adding simplistic sticky CTA instead) -->
+<div class="md:hidden fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant/30 p-4 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<a class="block w-full bg-primary-container text-on-primary text-center py-3 rounded-md font-bold hover:bg-primary transition-colors" href="#order-form">
+            ¡COMPRAR AHORA!
+        </a>
+</div>
+<!-- Scripts -->
+<script>
+        // Simple FAQ Accordion logic
+        document.querySelectorAll('.faq-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('.faq-icon');
+                
+                // Close all others
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    if (c !== content && !c.classList.contains('hidden')) {
+                        c.classList.add('hidden');
+                        c.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle current
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+
+
+</body></html>
