@@ -62,7 +62,9 @@ try {
                 }
                 
                 $response.ContentLength64 = $bytes.Length
-                $response.OutputStream.Write($bytes, 0, $bytes.Length)
+                if ($request.HttpMethod -ne "HEAD") {
+                    $response.OutputStream.Write($bytes, 0, $bytes.Length)
+                }
             } catch {
                 $response.StatusCode = 500
                 $response.ContentType = "text/plain"
