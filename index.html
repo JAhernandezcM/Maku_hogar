@@ -458,6 +458,19 @@
             });
         }
 
+        function createShopifyOrder(customer) {
+            return fetch('/api/create-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    fullName: customer.fullName,
+                    phone: customer.phone,
+                    address: customer.address,
+                    city: customer.city
+                })
+            });
+        }
+
         function withTimeout(promise, ms) {
             return Promise.race([
                 promise,
@@ -490,7 +503,12 @@
             localStorage.setItem('makuHogarCart', JSON.stringify(product));
             localStorage.setItem('makuHogarOrder', JSON.stringify(order));
 
-            withTimeout(saveOrderToSheet(customer, product).catch(function () {}), 4000).finally(function () {
+            const tasks = Promise.allSettled([
+                saveOrderToSheet(customer, product),
+                createShopifyOrder(customer)
+            ]);
+
+            withTimeout(tasks, 5000).finally(function () {
                 window.location.href = '/gracias';
             });
         });
