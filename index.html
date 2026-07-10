@@ -459,40 +459,26 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
         var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx3RuuV30JNe024aJrpmcr_5BOz4RFpY5vypCEx7vmBff61QcBbXtgicTZlMqWTdQnFgw/exec';
 
         function saveOrderToSheet(customer, product) {
-            return fetch(GOOGLE_SHEETS_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({
-                    fullName: customer.fullName,
-                    phone: customer.phone,
-                    address: customer.address,
-                    city: customer.city,
-                    productName: product.name,
-                    productVariant: product.variant,
-                    total: product.total
-                })
+            var payload = JSON.stringify({
+                fullName: customer.fullName,
+                phone: customer.phone,
+                address: customer.address,
+                city: customer.city,
+                productName: product.name,
+                productVariant: product.variant,
+                total: product.total
             });
+            navigator.sendBeacon(GOOGLE_SHEETS_URL, new Blob([payload], { type: 'text/plain;charset=utf-8' }));
         }
 
         function createShopifyOrder(customer) {
-            return fetch('/api/create-order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    fullName: customer.fullName,
-                    phone: customer.phone,
-                    address: customer.address,
-                    city: customer.city
-                })
+            var payload = JSON.stringify({
+                fullName: customer.fullName,
+                phone: customer.phone,
+                address: customer.address,
+                city: customer.city
             });
-        }
-
-        function withTimeout(promise, ms) {
-            return Promise.race([
-                promise,
-                new Promise(function (resolve) { setTimeout(resolve, ms); })
-            ]);
+            navigator.sendBeacon('/api/create-order', new Blob([payload], { type: 'application/json' }));
         }
 
         document.getElementById('orderForm').addEventListener('submit', function (e) {
@@ -524,14 +510,10 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                 fbq('track', 'InitiateCheckout', { value: product.total, currency: 'COP' });
             }
 
-            const tasks = Promise.allSettled([
-                saveOrderToSheet(customer, product),
-                createShopifyOrder(customer)
-            ]);
+            saveOrderToSheet(customer, product);
+            createShopifyOrder(customer);
 
-            withTimeout(tasks, 5000).finally(function () {
-                window.location.href = '/gracias';
-            });
+            window.location.href = '/gracias';
         });
     </script>
 
