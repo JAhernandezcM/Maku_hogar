@@ -158,17 +158,21 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                     El secreto para batidos frescos en el gimnasio, la oficina o de viaje. Sin cables y con pantalla digital inteligente.
                 </p>
 <div class="bg-surface-container-lowest p-6 rounded-xl border border-surface-variant shadow-ambient-md mt-4 max-w-md">
-<div class="flex justify-between items-end mb-4">
-<div>
-<p class="text-on-surface-variant line-through text-sm">Precio Regular: $100.000 COP</p>
-<p class="font-headline-md text-headline-md text-primary font-bold">Oferta: $59.900 COP</p>
-</div>
+<div class="flex justify-between items-center mb-3">
+<span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-2 py-1 rounded-full">PACK DE 2 · MÁS VENDIDO</span>
 <div class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-bold animate-pulse">
-                            -40% HOY
+                            -45% HOY
                         </div>
 </div>
-<a class="block w-full bg-primary-container text-on-primary text-center py-4 rounded-md font-label-md text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" href="#order-form">
-                        SÍ, QUIERO MI LICUADORA AHORA<br>
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-on-surface-variant line-through text-sm">Precio Regular: $199.900 COP</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">Oferta: $109.900 COP</p>
+<p class="text-xs text-on-surface-variant mt-1">Ideal para ti y alguien más — $54.950 c/u</p>
+</div>
+</div>
+<a class="block w-full bg-primary-container text-on-primary text-center py-4 rounded-md font-label-md text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" href="#order-form" id="heroCTA">
+                        SÍ, QUIERO MIS 2 LICUADORAS<br>
 <span class="text-sm font-normal opacity-90">(PAGO CONTRA ENTREGA)</span>
 </a>
 <div class="flex justify-center gap-4 mt-4 text-sm text-on-surface-variant">
@@ -659,6 +663,17 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
         document.querySelectorAll('input[name="colorOption"]').forEach(function (radio) {
             radio.addEventListener('change', updateProductPreview);
         });
+
+        var heroCTA = document.getElementById('heroCTA');
+        if (heroCTA) {
+            heroCTA.addEventListener('click', function () {
+                var pack2 = document.querySelector('input[name="pricingOption"][value="2"]');
+                if (pack2) {
+                    pack2.checked = true;
+                    pack2.dispatchEvent(new Event('change'));
+                }
+            });
+        }
 
         function saveOrderToSheet(customer, product) {
             var payload = JSON.stringify({
