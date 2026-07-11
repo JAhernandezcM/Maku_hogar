@@ -578,12 +578,6 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                 clearInterval(intervalId);
             }
 
-            carousel.addEventListener('mouseenter', function () {
-                nextSlide();
-                stopRotation();
-            });
-            carousel.addEventListener('mouseleave', startRotation);
-
             dots.forEach(function (dot) {
                 dot.addEventListener('click', function () {
                     showSlide(Number(dot.getAttribute('data-goto')));
