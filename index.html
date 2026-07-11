@@ -310,12 +310,37 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 <h3 class="font-headline-sm text-headline-sm text-primary mb-4">Resumen de tu Orden</h3>
 <div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant/30">
 <div class="w-20 h-20 rounded bg-white shadow-sm overflow-hidden flex-shrink-0">
-<img alt="VITA-BLENDER Miniatura" class="w-full h-full object-cover" data-alt="Close up of the sleek portable blender showing the digital display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAy4FtFu3ecsYy7AF-Ek7F7zWvejUWMc2sK51gQA_-uv65qLZFJgGL0PmQ-x0mCIeOjmmg8iZehDVYoey_380bNBRJRYhkfsHnPjeTfbglhZXTTtt4_iCeV_t2JJmoNQwkVr1ckSiZF3Hvjo_BRUG-ZvsW01zYEGkBzYs0mIGz5TfGZADS9zv0L96xLf4_IB0u7etNxflF1D_ytA4swerkIkM2hMD71uOu_u4OUBTMtIsDNzP2Er3wXHH7ePWkmMux-ryWeSRpNyEc">
+<img alt="VITA-BLENDER Miniatura" class="w-full h-full object-cover" id="productThumbnail" src="/licuadora-verde.jpg">
 </div>
 <div>
 <h4 class="font-label-md text-on-surface font-bold">VITA-BLENDER Inteligente</h4>
-<p class="text-on-surface-variant text-sm">Verde Esmeralda + Cable USB</p>
+<p class="text-on-surface-variant text-sm" id="productVariantLabel">Verde + Cable USB</p>
 </div>
+</div>
+
+<p class="text-sm font-bold text-on-surface mb-3">Elige el color:</p>
+<div class="flex gap-4 mb-6">
+<label class="flex flex-col items-center gap-1.5 cursor-pointer">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-outline-variant has-[:checked]:border-primary-container has-[:checked]:ring-2 has-[:checked]:ring-primary-container/30 transition-all">
+<input checked="" class="sr-only" name="colorOption" type="radio" value="Verde">
+<img alt="Licuadora color verde" class="w-full h-full object-cover" src="/licuadora-verde.jpg">
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Verde</span>
+</label>
+<label class="flex flex-col items-center gap-1.5 cursor-pointer">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-outline-variant has-[:checked]:border-primary-container has-[:checked]:ring-2 has-[:checked]:ring-primary-container/30 transition-all">
+<input class="sr-only" name="colorOption" type="radio" value="Morado">
+<img alt="Licuadora color morado" class="w-full h-full object-cover" src="/licuadora-morado.jpg">
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Morado</span>
+</label>
+<label class="flex flex-col items-center gap-1.5 cursor-pointer">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-outline-variant has-[:checked]:border-primary-container has-[:checked]:ring-2 has-[:checked]:ring-primary-container/30 transition-all">
+<input class="sr-only" name="colorOption" type="radio" value="Blanco">
+<img alt="Licuadora color blanco" class="w-full h-full object-cover" src="/licuadora-blanco.jpg">
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Blanco</span>
+</label>
 </div>
 
 <p class="text-sm font-bold text-on-surface mb-3">Elige tu paquete:</p>
@@ -509,6 +534,12 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             '3': { qty: 3, regularPrice: 299900, total: 159900 }
         };
 
+        var COLOR_IMAGES = {
+            'Verde': '/licuadora-verde.jpg',
+            'Morado': '/licuadora-morado.jpg',
+            'Blanco': '/licuadora-blanco.jpg'
+        };
+
         function formatCOP(n) {
             return '$' + Number(n).toLocaleString('es-CO');
         }
@@ -518,6 +549,11 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             return PRICING_OPTIONS[checked ? checked.value : '1'];
         }
 
+        function getSelectedColor() {
+            var checked = document.querySelector('input[name="colorOption"]:checked');
+            return checked ? checked.value : 'Verde';
+        }
+
         function updateOrderSummary() {
             var pricing = getSelectedPricing();
             document.getElementById('summaryRegular').textContent = formatCOP(pricing.regularPrice);
@@ -525,8 +561,18 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             document.getElementById('summaryTotal').textContent = formatCOP(pricing.total) + ' COP';
         }
 
+        function updateProductPreview() {
+            var color = getSelectedColor();
+            document.getElementById('productThumbnail').src = COLOR_IMAGES[color];
+            document.getElementById('productVariantLabel').textContent = color + ' + Cable USB';
+        }
+
         document.querySelectorAll('input[name="pricingOption"]').forEach(function (radio) {
             radio.addEventListener('change', updateOrderSummary);
+        });
+
+        document.querySelectorAll('input[name="colorOption"]').forEach(function (radio) {
+            radio.addEventListener('change', updateProductPreview);
         });
 
         function saveOrderToSheet(customer, product) {
@@ -549,7 +595,8 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                 address: customer.address,
                 city: customer.city,
                 quantity: product.quantity,
-                total: product.total
+                total: product.total,
+                color: product.color
             });
             navigator.sendBeacon('/api/create-order', new Blob([payload], { type: 'application/json' }));
         }
@@ -565,11 +612,13 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             };
 
             const pricing = getSelectedPricing();
+            const color = getSelectedColor();
 
             const product = {
                 name: 'VITA-BLENDER Inteligente',
-                variant: (pricing.qty > 1 ? pricing.qty + ' unidades — ' : '') + 'Verde Esmeralda + Cable USB',
-                image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAy4FtFu3ecsYy7AF-Ek7F7zWvejUWMc2sK51gQA_-uv65qLZFJgGL0PmQ-x0mCIeOjmmg8iZehDVYoey_380bNBRJRYhkfsHnPjeTfbglhZXTTtt4_iCeV_t2JJmoNQwkVr1ckSiZF3Hvjo_BRUG-ZvsW01zYEGkBzYs0mIGz5TfGZADS9zv0L96xLf4_IB0u7etNxflF1D_ytA4swerkIkM2hMD71uOu_u4OUBTMtIsDNzP2Er3wXHH7ePWkmMux-ryWeSRpNyEc',
+                variant: (pricing.qty > 1 ? pricing.qty + ' unidades — ' : '') + color + ' + Cable USB',
+                image: COLOR_IMAGES[color],
+                color: color,
                 quantity: pricing.qty,
                 regularPrice: pricing.regularPrice,
                 discount: pricing.regularPrice - pricing.total,

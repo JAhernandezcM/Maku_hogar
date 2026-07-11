@@ -15,6 +15,7 @@ module.exports = async function handler(req, res) {
   const city = body.city;
   const quantity = Number(body.quantity) || 1;
   const total = Number(body.total);
+  const color = body.color || '';
 
   if (!fullName || !phone || !address || !city) {
     res.status(400).json({ error: 'Faltan datos del cliente' });
@@ -28,6 +29,9 @@ module.exports = async function handler(req, res) {
   const lineItem = { variant_id: Number(variantId), quantity: quantity };
   if (total > 0) {
     lineItem.price = (total / quantity).toFixed(2);
+  }
+  if (color) {
+    lineItem.properties = [{ name: 'Color', value: color }];
   }
 
   const orderPayload = {
@@ -48,7 +52,7 @@ module.exports = async function handler(req, res) {
       },
       financial_status: 'pending',
       tags: 'landing-page-cod',
-      note: 'Pedido generado desde la landing page (pago contra entrega).'
+      note: 'Pedido generado desde la landing page (pago contra entrega).' + (color ? ' Color elegido: ' + color + '.' : '')
     }
   };
 
