@@ -13,6 +13,8 @@ module.exports = async function handler(req, res) {
   const phone = body.phone;
   const address = body.address;
   const city = body.city;
+  const quantity = Number(body.quantity) || 1;
+  const total = Number(body.total);
 
   if (!fullName || !phone || !address || !city) {
     res.status(400).json({ error: 'Faltan datos del cliente' });
@@ -23,9 +25,14 @@ module.exports = async function handler(req, res) {
   const firstName = nameParts[0];
   const lastName = nameParts.slice(1).join(' ') || nameParts[0];
 
+  const lineItem = { variant_id: Number(variantId), quantity: quantity };
+  if (total > 0) {
+    lineItem.price = (total / quantity).toFixed(2);
+  }
+
   const orderPayload = {
     order: {
-      line_items: [{ variant_id: Number(variantId), quantity: 1 }],
+      line_items: [lineItem],
       customer: {
         first_name: firstName,
         last_name: lastName,
