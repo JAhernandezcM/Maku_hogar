@@ -126,7 +126,7 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 <!-- Announcement Bar -->
 <div class="bg-primary-container text-on-primary text-center py-2 px-4 font-label-md sticky top-0 z-50 shadow-sm flex items-center justify-center gap-2">
 <span class="material-symbols-outlined text-[18px]">local_shipping</span>
-        ¡ENVÍO GRATIS Y PAGO CONTRA ENTREGA EN TODO COLOMBIA!
+        ¡PAGO CONTRA ENTREGA EN TODO COLOMBIA!
     </div>
 <!-- Top Navigation (Shell) -->
 <nav class="bg-background/80 dark:bg-background/80 backdrop-blur-md fixed top-10 w-full z-40 border-b border-outline-variant/30 shadow-sm hidden md:block">
@@ -161,13 +161,13 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 <div class="flex justify-between items-center mb-3">
 <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-2 py-1 rounded-full">PACK DE 2 · MÁS VENDIDO</span>
 <div class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-bold animate-pulse">
-                            -45% HOY
+                            -49% HOY
                         </div>
 </div>
 <div class="flex justify-between items-end mb-4">
 <div>
-<p class="text-on-surface-variant line-through text-sm">Precio Regular: $199.900 COP</p>
-<p class="font-headline-md text-headline-md text-primary font-bold">Oferta: $109.900 COP</p>
+<p class="text-on-surface-variant line-through text-sm">Precio Regular: $184.900 COP</p>
+<p class="font-headline-md text-headline-md text-primary font-bold">Oferta: $94.900 COP</p>
 </div>
 </div>
 <a class="block w-full bg-primary-container text-on-primary text-center py-4 rounded-md font-label-md text-lg hover:bg-primary transition-colors shadow-lg shadow-primary-container/30 transform hover:-translate-y-1 active:scale-95 duration-200" href="#order-form" id="heroCTA">
@@ -392,8 +392,8 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 </div>
 </div>
 <div class="text-right flex-shrink-0">
-<p class="text-xs text-on-surface-variant line-through">$100.000</p>
-<p class="font-bold text-primary">$59.900</p>
+<p class="text-xs text-on-surface-variant line-through">$85.000</p>
+<p class="font-bold text-primary">$44.900</p>
 </div>
 </label>
 <label class="relative flex items-center justify-between gap-3 p-4 rounded-lg border-2 border-outline-variant has-[:checked]:border-primary-container has-[:checked]:bg-primary-container/5 cursor-pointer transition-colors">
@@ -406,8 +406,8 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 </div>
 </div>
 <div class="text-right flex-shrink-0">
-<p class="text-xs text-on-surface-variant line-through">$199.900</p>
-<p class="font-bold text-primary">$109.900</p>
+<p class="text-xs text-on-surface-variant line-through">$184.900</p>
+<p class="font-bold text-primary">$94.900</p>
 </div>
 </label>
 <label class="flex items-center justify-between gap-3 p-4 rounded-lg border-2 border-outline-variant has-[:checked]:border-primary-container has-[:checked]:bg-primary-container/5 cursor-pointer transition-colors">
@@ -419,15 +419,15 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 </div>
 </div>
 <div class="text-right flex-shrink-0">
-<p class="text-xs text-on-surface-variant line-through">$299.900</p>
-<p class="font-bold text-primary">$159.900</p>
+<p class="text-xs text-on-surface-variant line-through">$284.900</p>
+<p class="font-bold text-primary">$144.900</p>
 </div>
 </label>
 </div>
 
 <div class="flex justify-between mb-2 text-on-surface-variant">
 <span class="">Precio Regular</span>
-<span class="line-through" id="summaryRegular">$100.000</span>
+<span class="line-through" id="summaryRegular">$85.000</span>
 </div>
 <div class="flex justify-between mb-2 text-primary-container font-medium">
 <span class="">Descuento</span>
@@ -435,11 +435,11 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 </div>
 <div class="flex justify-between mb-4 text-on-surface-variant">
 <span class="">Envío</span>
-<span class="text-primary-container font-bold">GRATIS</span>
+<span class="font-bold text-on-surface" id="summaryShipping">Selecciona tu ciudad</span>
 </div>
 <div class="flex justify-between items-end pt-4 border-t border-outline-variant/30">
 <span class="font-bold text-on-surface">Total a Pagar (Al recibir)</span>
-<span class="font-headline-sm text-headline-sm text-primary font-bold" id="summaryTotal">$59.900 COP</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="summaryTotal">$44.900 COP</span>
 </div>
 </div>
 <!-- Form -->
@@ -459,8 +459,19 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 <input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="address" name="address" required="" type="text">
 </div>
 <div>
-<label class="block text-sm font-medium text-on-surface mb-1" for="city">Ciudad / Departamento</label>
-<input class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="city" name="city" required="" type="text">
+<label class="block text-sm font-medium text-on-surface mb-1" for="city">Ciudad</label>
+<select class="w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors" id="city" name="city" required="">
+<option disabled="" selected="" value="">Selecciona tu ciudad</option>
+<option value="Bogotá">Bogotá</option>
+<option value="Medellín">Medellín</option>
+<option value="Cali">Cali</option>
+<option value="Barranquilla">Barranquilla</option>
+<option value="Bucaramanga">Bucaramanga</option>
+<option value="Cartagena">Cartagena</option>
+<option value="__otra__">Otra ciudad</option>
+</select>
+<input class="hidden w-full rounded-md border-outline-variant shadow-sm focus:border-primary-container focus:ring focus:ring-primary-container/20 focus:ring-opacity-50 transition-colors mt-2" id="cityOther" placeholder="Escribe el nombre de tu ciudad" type="text">
+<p class="text-xs text-on-surface-variant mt-1" id="shippingStatus"></p>
 </div>
 <div class="bg-secondary-container/30 p-4 rounded-md border border-secondary-fixed mt-6 flex items-start gap-3">
 <div class="mt-0.5">
@@ -617,9 +628,9 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
         var GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx3RuuV30JNe024aJrpmcr_5BOz4RFpY5vypCEx7vmBff61QcBbXtgicTZlMqWTdQnFgw/exec';
 
         var PRICING_OPTIONS = {
-            '1': { qty: 1, regularPrice: 100000, total: 59900 },
-            '2': { qty: 2, regularPrice: 199900, total: 109900 },
-            '3': { qty: 3, regularPrice: 299900, total: 159900 }
+            '1': { qty: 1, regularPrice: 85000, total: 44900 },
+            '2': { qty: 2, regularPrice: 184900, total: 94900 },
+            '3': { qty: 3, regularPrice: 284900, total: 144900 }
         };
 
         var COLOR_IMAGES = {
@@ -627,6 +638,9 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             'Morado': '/licuadora-morado.jpg',
             'Blanco': '/licuadora-blanco.jpg'
         };
+
+        var SHIPPING_RATES = { bogota: 12000, other: 20000 };
+        var shippingCost = null;
 
         function formatCOP(n) {
             return '$' + Number(n).toLocaleString('es-CO');
@@ -642,11 +656,58 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             return checked ? checked.value : 'Verde';
         }
 
+        function getEffectiveCity() {
+            var citySelect = document.getElementById('city');
+            if (citySelect.value === '__otra__') {
+                return document.getElementById('cityOther').value.trim();
+            }
+            return citySelect.value;
+        }
+
+        function computeShippingCost(city) {
+            var isBogota = ['bogotá', 'bogota'].indexOf(city.trim().toLowerCase()) !== -1;
+            return isBogota ? SHIPPING_RATES.bogota : SHIPPING_RATES.other;
+        }
+
+        function applyShipping() {
+            var city = getEffectiveCity();
+            var shippingStatus = document.getElementById('shippingStatus');
+            if (!city) {
+                shippingCost = null;
+                document.getElementById('summaryShipping').textContent = 'Selecciona tu ciudad';
+                shippingStatus.textContent = '';
+                updateOrderSummary();
+                return;
+            }
+            shippingCost = computeShippingCost(city);
+            document.getElementById('summaryShipping').textContent = formatCOP(shippingCost);
+            shippingStatus.textContent = 'Envío a ' + city + '.';
+            updateOrderSummary();
+        }
+
+        document.getElementById('city').addEventListener('change', function () {
+            var cityOtherInput = document.getElementById('cityOther');
+            if (this.value === '__otra__') {
+                cityOtherInput.classList.remove('hidden');
+                cityOtherInput.focus();
+                shippingCost = null;
+                document.getElementById('summaryShipping').textContent = 'Escribe tu ciudad';
+                document.getElementById('shippingStatus').textContent = '';
+                updateOrderSummary();
+            } else {
+                cityOtherInput.classList.add('hidden');
+                cityOtherInput.value = '';
+                applyShipping();
+            }
+        });
+        document.getElementById('cityOther').addEventListener('blur', applyShipping);
+
         function updateOrderSummary() {
             var pricing = getSelectedPricing();
             document.getElementById('summaryRegular').textContent = formatCOP(pricing.regularPrice);
             document.getElementById('summaryDiscount').textContent = '-' + formatCOP(pricing.regularPrice - pricing.total);
-            document.getElementById('summaryTotal').textContent = formatCOP(pricing.total) + ' COP';
+            var grandTotal = pricing.total + (shippingCost || 0);
+            document.getElementById('summaryTotal').textContent = formatCOP(grandTotal) + ' COP';
         }
 
         function updateProductPreview() {
@@ -674,15 +735,15 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
             });
         }
 
-        function saveOrderToSheet(customer, product) {
+        function saveOrderToSheet(customer, product, grandTotal) {
             var payload = JSON.stringify({
                 fullName: customer.fullName,
                 phone: customer.phone,
                 address: customer.address,
                 city: customer.city,
                 productName: product.name,
-                productVariant: product.variant,
-                total: product.total
+                productVariant: product.variant + ' | Envío a ' + customer.city + ': ' + formatCOP(product.shippingCost),
+                total: grandTotal
             });
             navigator.sendBeacon(GOOGLE_SHEETS_URL, new Blob([payload], { type: 'text/plain;charset=utf-8' }));
         }
@@ -695,7 +756,8 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                 city: customer.city,
                 quantity: product.quantity,
                 total: product.total,
-                color: product.color
+                color: product.color,
+                shippingCost: product.shippingCost
             });
             navigator.sendBeacon('/api/create-order', new Blob([payload], { type: 'application/json' }));
         }
@@ -703,11 +765,18 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
         document.getElementById('orderForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
+            applyShipping();
+            var city = getEffectiveCity();
+            if (!city || shippingCost === null) {
+                document.getElementById(document.getElementById('city').value === '__otra__' ? 'cityOther' : 'city').focus();
+                return;
+            }
+
             const customer = {
                 fullName: document.getElementById('fullName').value,
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
-                city: document.getElementById('city').value
+                city: city
             };
 
             const pricing = getSelectedPricing();
@@ -721,20 +790,22 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                 quantity: pricing.qty,
                 regularPrice: pricing.regularPrice,
                 discount: pricing.regularPrice - pricing.total,
-                shipping: 0,
+                shippingCost: shippingCost,
                 total: pricing.total
             };
 
-            const order = { customer: customer, product: product, createdAt: new Date().toISOString() };
+            const grandTotal = product.total + product.shippingCost;
+
+            const order = { customer: customer, product: product, grandTotal: grandTotal, createdAt: new Date().toISOString() };
 
             localStorage.setItem('makuHogarCart', JSON.stringify(product));
             localStorage.setItem('makuHogarOrder', JSON.stringify(order));
 
             if (typeof fbq === 'function') {
-                fbq('track', 'InitiateCheckout', { value: product.total, currency: 'COP' });
+                fbq('track', 'InitiateCheckout', { value: grandTotal, currency: 'COP' });
             }
 
-            saveOrderToSheet(customer, product);
+            saveOrderToSheet(customer, product, grandTotal);
             createShopifyOrder(customer, product);
 
             window.location.href = '/gracias';

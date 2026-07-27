@@ -145,7 +145,15 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
 <p class="text-on-surface-variant text-sm" id="productVariant">-</p>
 </div>
 </div>
-<div class="flex justify-between items-end pt-2">
+<div class="flex justify-between mb-2 text-on-surface-variant">
+<span>Subtotal productos</span>
+<span id="productSubtotal">-</span>
+</div>
+<div class="flex justify-between mb-2 text-on-surface-variant">
+<span>Envío (<span id="shippingCityLabel">-</span>)</span>
+<span id="shippingCostLabel">-</span>
+</div>
+<div class="flex justify-between items-end pt-4 border-t border-outline-variant/30 mt-2">
 <span class="font-bold text-on-surface">Total a Pagar (Al recibir)</span>
 <span class="font-headline-sm text-headline-sm text-primary font-bold" id="productTotal">-</span>
 </div>
@@ -186,14 +194,18 @@ src="https://www.facebook.com/tr?id=1100322915704937&ev=PageView&noscript=1"
                     document.getElementById('productImage').src = order.product.image;
                     document.getElementById('productName').textContent = order.product.name;
                     document.getElementById('productVariant').textContent = order.product.variant;
-                    document.getElementById('productTotal').textContent = fmt(order.product.total) + ' COP';
+                    var grandTotal = order.grandTotal || (order.product.total + (order.product.shippingCost || 0));
+                    document.getElementById('productSubtotal').textContent = fmt(order.product.total);
+                    document.getElementById('shippingCityLabel').textContent = order.customer.city;
+                    document.getElementById('shippingCostLabel').textContent = fmt(order.product.shippingCost || 0);
+                    document.getElementById('productTotal').textContent = fmt(grandTotal) + ' COP';
                     document.getElementById('customerAddress').textContent = order.customer.address;
                     document.getElementById('customerCityPhone').textContent =
                         order.customer.city + ' · ' + order.customer.phone;
 
                     var alreadyTracked = localStorage.getItem('makuHogarPurchaseTrackedAt');
                     if (typeof fbq === 'function' && alreadyTracked !== order.createdAt) {
-                        fbq('track', 'Purchase', { value: order.product.total, currency: 'COP' });
+                        fbq('track', 'Purchase', { value: grandTotal, currency: 'COP' });
                         localStorage.setItem('makuHogarPurchaseTrackedAt', order.createdAt);
                     }
                 } catch (e) {}
